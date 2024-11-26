@@ -19,15 +19,16 @@ function FieldInfo({ field }: { field: FieldApi<any, any, any, any> }) {
   );
 }
 
-export default function Login() {
+export default function Register() {
   const form = useForm({
     defaultValues: {
       username: "",
+      email: "",
       password: "",
     },
     onSubmit: async ({ value }) => {
       // Submit form data to the server
-      const response = await fetch("http://localhost:8000/signin", {
+      const response = await fetch("http://localhost:8000/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +42,7 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -59,6 +60,28 @@ export default function Login() {
             children={(field) => (
               <>
                 <Label htmlFor={field.name}>Username:</Label>
+                <Input
+                  id={field.name}
+                  name={field.name}
+                  value={field.state.value}
+                  onBlur={field.handleBlur}
+                  onChange={(e) => field.handleChange(e.target.value)}
+                />
+                <FieldInfo field={field} />
+              </>
+            )}
+          />
+        </div>
+        <div>
+          <form.Field
+            name="email"
+            validators={{
+              onChange: ({ value }) =>
+                !value ? "An email is required" : undefined,
+            }}
+            children={(field) => (
+              <>
+                <Label htmlFor={field.name}>Email:</Label>
                 <Input
                   id={field.name}
                   name={field.name}
@@ -98,7 +121,7 @@ export default function Login() {
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
             <Button type="submit" disabled={!canSubmit}>
-              {isSubmitting ? "..." : "Login"}
+              {isSubmitting ? "..." : "Register"}
             </Button>
           )}
         />
