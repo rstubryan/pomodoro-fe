@@ -11,6 +11,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { CircleX } from "lucide-react";
 import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
+import { redirect } from "next/navigation";
 
 function FieldInfo({ field }: { field: FieldApi<any, any, any, any> }) {
   return (
@@ -50,7 +51,7 @@ export default function Login() {
         const token = data.token;
         const decoded = jwtDecode(token);
         Cookies.set("user", JSON.stringify(decoded), { expires: 7 });
-        console.log(decoded);
+        redirect("/dashboard");
       }
     },
   });
