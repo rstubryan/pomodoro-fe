@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ContainerLayout from "@/components/templates/ContainerLayout";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Register",
 };
 
 export default function RootLayout({
