@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { isAuth } from "@/hook/useAuth";
 
 const protectedRoutes = ["/dashboard"];
-const publicRoutes = ["/login", "/register", "/"];
+const publicRoutes = ["/login", "/register"];
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
