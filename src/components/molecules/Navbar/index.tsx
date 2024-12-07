@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { handleLogout } from "@/auth/logout";
 import Link from "next/link";
 import { SubHeading } from "@/components/atoms/Typography";
+import { usePathname } from "next/navigation";
 
 interface AuthenticatedDataProps {
   username: string;
@@ -33,18 +34,47 @@ export default function Navbar() {
     }
   }, []);
 
+  const pathname = usePathname();
+  console.log(pathname);
+
+  const navLink = [
+    {
+      id: 1,
+      name: "Dashboard",
+      link: "/dashboard",
+      isActive: pathname === "/dashboard",
+    },
+    {
+      id: 2,
+      name: "Management",
+      link: "/dashboard/management",
+      isActive: pathname === "/dashboard/management",
+    },
+  ];
+
   const { username } = authenticatedData || {};
 
   return (
     <>
       <nav className={`flex items-center justify-between`}>
-        <ul>
-          <li className="">
-            <Link href={`/`} className={`cursor-pointer`}>
-              <SubHeading>Workpace</SubHeading>
-            </Link>
-          </li>
-        </ul>
+        <div className="flex items-center gap-8">
+          <Link href={`/`} className={`cursor-pointer`}>
+            <SubHeading>Workpace</SubHeading>
+          </Link>
+
+          <ul className={`flex items-center gap-2`}>
+            {navLink.map((item) => (
+              <li key={item.id} className={`ml-4`}>
+                <Link
+                  href={item.link}
+                  className={`${item.isActive ? "underline underline-offset-8" : ""}`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
