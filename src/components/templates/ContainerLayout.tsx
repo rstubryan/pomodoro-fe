@@ -11,7 +11,7 @@ export default function ContainerLayout({
   ...props
 }: ContainerLayoutProps) {
   return (
-    <div className={cn(`container ${className}`)} {...props}>
+    <div className={cn(`max-w-8xl container my-5 ${className}`)} {...props}>
       {children}
     </div>
   );
