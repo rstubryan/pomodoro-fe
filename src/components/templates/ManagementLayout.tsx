@@ -1,6 +1,6 @@
 import MainLayout from "@/components/templates/MainLayout";
 
-export default function DashboardLayout() {
+export default function ManagementLayout() {
   return (
     <>
       <MainLayout />
