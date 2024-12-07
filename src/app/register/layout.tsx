@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ContainerLayout from "@/components/templates/ContainerLayout";
+import AuthLayout from "@/components/templates/AuthLayout";
 
 export const metadata: Metadata = {
   title: "Register",
@@ -10,11 +10,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ContainerLayout
-      className={`grid min-h-screen max-w-2xl grid-cols-1 items-center justify-center`}
-    >
-      {children}
-    </ContainerLayout>
-  );
+  return <AuthLayout>{children}</AuthLayout>;
 }
