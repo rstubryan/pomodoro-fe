@@ -35,7 +35,6 @@ export default function Login() {
       password: "",
     },
     onSubmit: async ({ value }) => {
-      // Submit form data to the server
       const response = await fetch("http://localhost:8000/signin", {
         method: "POST",
         headers: {
