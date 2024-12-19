@@ -16,6 +16,7 @@ import { handleLogout } from "@/auth/logout";
 import Link from "next/link";
 import { SubHeading } from "@/components/atoms/Typography";
 import { usePathname } from "next/navigation";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 interface AuthenticatedDataProps {
   username: string;
@@ -58,14 +59,14 @@ export default function Navbar() {
     <>
       <nav className={`flex items-center justify-between`}>
         <div className="flex items-center gap-8">
-          <Link href={`/`} className={`cursor-pointer`}>
-            <SubHeading>Workpace</SubHeading>
-          </Link>
+          <div className="flex gap-2">
+            <SidebarTrigger />
+          </div>
 
           {pathname.startsWith("/dashboard") ? (
             <ul className={`hidden items-center gap-2 lg:flex`}>
               {navLink.map((item) => (
-                <li key={item.id} className={``}>
+                <li key={item.id} className={`text-lg`}>
                   <Link
                     href={item.link}
                     className={`${item.isActive ? "underline underline-offset-8" : ""}`}

@@ -57,7 +57,7 @@ export default function Login() {
 
   return (
     <div>
-      <SubHeading className={`text-center`}>Login</SubHeading>
+      <SubHeading className={`text-center text-primary`}>Login</SubHeading>
       {error && (
         <Alert variant="destructive" className={`my-2`}>
           <CircleX className={`h-4 w-4`} />
