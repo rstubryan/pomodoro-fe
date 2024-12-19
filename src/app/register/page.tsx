@@ -58,7 +58,7 @@ export default function Register() {
 
   return (
     <div>
-      <SubHeading className={`text-center`}>Register</SubHeading>
+      <SubHeading className={`text-center text-primary`}>Register</SubHeading>
       {error && (
         <Alert variant="destructive" className={`my-2`}>
           <CircleX className={`h-4 w-4`} />
